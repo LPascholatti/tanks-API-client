@@ -1,17 +1,9 @@
-import React, { Component } from 'react';
-import testApi from '../api';
+import React, { Component } from "react";
 
 export default class Home extends Component {
+
   render() {
 
-    testApi.fetchData(function(err, data) {
-      console.log(data);
-    });
-
-    return (
-      <div>
-        
-      </div>
-    )
-  }
+    return <div></div>;                                                           
+  }   
 }
