@@ -5,8 +5,15 @@ export default class Home extends Component {
   render() {
     return (
       <div>
-        Welcome to Tanks API
-        <TankListContainer />
+        <header>
+          <h1>Welcome to Tanks API</h1>
+        </header>
+        <main>
+          <h2>
+            <strong>List of tanks:</strong>
+          </h2>
+          <TankListContainer />
+        </main>
       </div>
     );
   }

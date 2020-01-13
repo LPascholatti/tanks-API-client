@@ -1,3 +1,12 @@
 .App {
   text-align: center;
 }
+
+.tanks-images {
+  max-width: 40rem;
+  max-height: 36rem;
+}
+
+.tanks-list {
+  list-style-type: none;
+}

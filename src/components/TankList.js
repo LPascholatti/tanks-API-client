@@ -7,10 +7,11 @@ export default class TankList extends Component {
 
     return (
       <li key={id}>
-        <img className="tanks-images" alt={id} src={img} />
         <Link to={`tanks/${id}`}>
           <p>{`${name}: ${type} tank from ${country}`}</p>
         </Link>
+        <img className="tanks-images" alt={id} src={img} />
+        <hr/>
       </li>
     );
   }
@@ -22,7 +23,9 @@ export default class TankList extends Component {
       <div className="tanks-list">
         <main>
           {!tanks && "Loading..."}
-          {tanks && <ul>{tanks.map(this.renderTanks)}</ul>}
+          {tanks && (
+            <ul className="tanks-list">{tanks.map(this.renderTanks)}</ul>
+          )}
         </main>
       </div>
     );
