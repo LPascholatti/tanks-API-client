@@ -1,9 +1,6 @@
 import { combineReducers } from "redux";
-
-const initialReducer = (state = [], action) => {
-  return state;
-};
+import tanks from './tanks';
 
 export default combineReducers({
-  initialReducer
+  tanks
 });
