@@ -19,7 +19,7 @@ export default class TankList extends Component {
   };
 
   handleSubmit = (event, value) => {
-    this.setState({ value: value });
+    this.setState({ value: this.state.value });
     console.log("state", this.state.value);
     event.preventDefault();
   };
@@ -33,7 +33,10 @@ export default class TankList extends Component {
       <li key={id}>
         <h3>{`${name}: ${type} tank from ${country}`}</h3>
         <img className="tanks-images" alt={id} src={img} />
-        <p>{`Ammunition equiped: ${ammoString}`}</p>
+        <p>
+          <strong>{"Ammunition equiped: "}</strong>
+          {ammoString}
+        </p>
         <Link to={`tanks/${id}`}>
           <button>Details</button>
         </Link>
@@ -69,6 +72,28 @@ export default class TankList extends Component {
       const filterLight = tanks.filter(tanks => tanks.type === "light");
       console.log("filterLight", filterLight);
 
+      //By name
+      const filterT29 = tanks.filter(tanks => tanks.name === "T29");
+      console.log("filterT29", filterT29);
+      const filterT57 = tanks.filter(tanks => tanks.name === "T57 Heavy Tank");
+      console.log("filterT29", filterT57);
+      const filterM48A5 = tanks.filter(tanks => tanks.name === "M48A5 Patton");
+      console.log("filterM48A5", filterM48A5);
+      const filter140 = tanks.filter(tanks => tanks.name === "Object 140");
+      console.log("filter140", filter140);
+      const filterCromwell = tanks.filter(tanks => tanks.name === "Cromwell");
+      console.log("filterCromwell", filterCromwell);
+      const filterT54 = tanks.filter(tanks => tanks.name === "T-54 ltwt");
+      console.log("filterT54", filterT54);
+      const filterT49 = tanks.filter(tanks => tanks.name === "T49");
+      console.log("filterT49", filterT49);
+      const filterIS7 = tanks.filter(tanks => tanks.name === "IS-7");
+      console.log("filterIS7", filterIS7);
+      const filterSc = tanks.filter(tanks => tanks.name === "Super Conqueror");
+      console.log("filterSc", filterSc);
+      const filter907 = tanks.filter(tanks => tanks.name === "Object 907");
+      console.log("filter907", filter907);
+
       const mapTanks = tanks.map(this.renderTanks);
       console.log("mapTanks", mapTanks);
       const mapNames = tanks.map(tanks => tanks.name);
@@ -87,6 +112,26 @@ export default class TankList extends Component {
           return filterMedium.map(this.renderTanks);
         case "light":
           return filterLight.map(this.renderTanks);
+        case "T29":
+          return filterT29.map(this.renderTanks);
+        case "T57 Heavy Tank":
+          return filterT57.map(this.renderTanks);
+        case "M48A5 Patton":
+          return filterM48A5.map(this.renderTanks);
+        case "Object 140":
+          return filter140.map(this.renderTanks);
+        case "Cromwell":
+          return filterCromwell.map(this.renderTanks);
+        case "T-54 ltwt":
+          return filterT54.map(this.renderTanks);
+        case "T49":
+          return filterT49.map(this.renderTanks);
+        case "IS-7":
+          return filterIS7.map(this.renderTanks);
+        case "Super Conqueror":
+          return filterSc.map(this.renderTanks);
+        case "Object 907":
+          return filter907.map(this.renderTanks);
         default:
           return mapTanks;
       }
@@ -98,30 +143,45 @@ export default class TankList extends Component {
           <h2>
             <strong>List of tanks:</strong>
           </h2>
+          <div className="forms">
           <form onSubmit={this.handleSubmit}>
-            Filter Tank By Country:
+            {"Filter Tank By Country: "}
             <select value={this.state.value} onChange={this.handleChange}>
               <option value="">ALL</option>
               <option value="USA">USA</option>
               <option value="USSR">USSR</option>
               <option value="UK">UK</option>
             </select>
+            <input type="submit" value="Submit" />
           </form>
           <form onSubmit={this.handleSubmit}>
-            Filter Tank By Type:
+            {"Filter Tank By Type: "}
             <select value={this.state.value} onChange={this.handleChange}>
               <option value="">ALL</option>
               <option value="heavy">HEAVY</option>
               <option value="medium">MEDIUM</option>
               <option value="light">LIGHT</option>
             </select>
+            <input type="submit" value="Submit" />
           </form>
           <form onSubmit={this.handleSubmit}>
-            Filter Tank By Name:
+            {"Filter Tank By Name: "}
             <select value={this.state.value} onChange={this.handleChange}>
-              {tanks.map(this.renderNameOptions)}
+              <option value="">ALL</option>
+              <option value="T29">T29</option>
+              <option value="T57 Heavy Tank">T57 Heavy Tank</option>
+              <option value="M48A5 Patton">M48A5 Patton</option>
+              <option value="Object 140">Object 140</option>
+              <option value="Cromwell">Cromwell</option>
+              <option value="T-54 ltwt">T-54 ltwt</option>
+              <option value="T49">T49</option>
+              <option value="IS-7">IS-7</option>
+              <option value="Super Conqueror">Super Conqueror</option>
+              <option value="Object 907">Object 907</option>
             </select>
+            <input type="submit" value="Submit" />
           </form>
+          </div>
           {!tanks && "Loading..."}
           {tanks && (
             <ul className="tanks-list">{filterMain(this.state.value)}</ul>
