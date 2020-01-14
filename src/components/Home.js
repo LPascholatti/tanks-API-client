@@ -11,12 +11,10 @@ export default class Home extends Component {
           <h1>Welcome to Tanks API</h1>
         </header>
         <main>
-          <h2>
-            <strong>List of tanks:</strong>
-          </h2>
           <Route path='/' exact component={TankListContainer}/>
           <Route path='/tanks/:id' component={TankDetailsContainer}/>
         </main>
+        <footer className="footer"></footer>
       </div>
     );
   }
