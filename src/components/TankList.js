@@ -48,6 +48,8 @@ export default class TankList extends Component {
 
     // Filter By Country Function
     const filterMain = value => {
+
+      // By Country
       const filterUsa = tanks.filter(tanks => tanks.country === "USA");
       console.log("filterUsa", filterUsa);
       const filterUssr = tanks.filter(tanks => tanks.country === "USSR");
@@ -55,8 +57,23 @@ export default class TankList extends Component {
       const filterUk = tanks.filter(tanks => tanks.country === "UK");
       console.log("filterUk", filterUk);
 
+      // By type
+      const filterHeavy = tanks.filter(tanks => tanks.type === "heavy")
+      console.log("filterHeavy", filterHeavy)
+      const filterMedium = tanks.filter(tanks => tanks.type === "medium")
+      console.log("filterMedium", filterMedium)
+      const filterLight = tanks.filter(tanks => tanks.type === "light")
+      console.log("filterLight", filterLight)
+
       const mapTanks = tanks.map(this.renderTanks);
       console.log("mapTanks", mapTanks);
+      const mapNames = tanks.map(tanks => tanks.name)
+      console.log("mapNames", mapNames)
+
+      const filterByName = (name) => {
+        let filterName = tanks.filter(tanks => tanks.name === name)
+        return filterName.map(this.renderTanks)
+      }
 
       switch (value) {
         case "USA":
@@ -65,6 +82,14 @@ export default class TankList extends Component {
           return filterUssr.map(this.renderTanks);
         case "UK":
           return filterUk.map(this.renderTanks);
+        case "heavy":
+          return filterHeavy.map(this.renderTanks)
+        case "medium":
+          return filterMedium.map(this.renderTanks)
+        case "light":
+          return filterLight.map(this.renderTanks)
+        case "NAME":
+          return filterByName(value)
         default:
           return mapTanks;
       }
@@ -78,11 +103,20 @@ export default class TankList extends Component {
           </h2>
           <form onSubmit={this.handleSubmit}>
             Filter Tank By Country:
-            <select value={this.state.country} onChange={this.handleChange}>
+            <select value={this.state.value} onChange={this.handleChange}>
               <option value="">ALL</option>
               <option value="USA">USA</option>
               <option value="USSR">USSR</option>
               <option value="UK">UK</option>
+            </select>
+          </form>
+          <form onSubmit={this.handleSubmit}>
+            Filter Tank By Type:
+            <select value={this.state.value} onChange={this.handleChange}>
+              <option value="">ALL</option>
+              <option value="heavy">HEAVY</option>
+              <option value="medium">MEDIUM</option>
+              <option value="light">LIGHT</option>
             </select>
           </form>
           {!tanks && "Loading..."}
