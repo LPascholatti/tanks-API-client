@@ -5,8 +5,34 @@
 .tanks-images {
   max-width: 40rem;
   max-height: 36rem;
+  border: solid;
+}
+
+.tank-details-img {
+  max-width: 50rem;
+  max-height: 46rem;
+  border: solid;
 }
 
 .tanks-list {
   list-style-type: none;
+}
+
+.tank-details {
+  padding: 1rem;
+}
+
+.tanks-list {
+  padding: 1rem;
+}
+
+footer {
+  padding: 7rem;
+  background-color: black;
+}
+
+header {
+  padding: 2rem;
+  background-color: black;
+  color: white;
 }
