@@ -20,7 +20,6 @@ export default class TankList extends Component {
 
   handleSubmit = (event, value) => {
     this.setState({ value: this.state.value });
-    console.log("state", this.state.value);
     event.preventDefault();
   };
 
@@ -58,41 +57,25 @@ export default class TankList extends Component {
     const filterMain = value => {
       // By Country
       const filterUsa = tanks.filter(tanks => tanks.country === "USA");
-      console.log("filterUsa", filterUsa);
       const filterUssr = tanks.filter(tanks => tanks.country === "USSR");
-      console.log("filterUssr", filterUssr);
       const filterUk = tanks.filter(tanks => tanks.country === "UK");
-      console.log("filterUk", filterUk);
 
       // By type
       const filterHeavy = tanks.filter(tanks => tanks.type === "heavy");
-      console.log("filterHeavy", filterHeavy);
       const filterMedium = tanks.filter(tanks => tanks.type === "medium");
-      console.log("filterMedium", filterMedium);
       const filterLight = tanks.filter(tanks => tanks.type === "light");
-      console.log("filterLight", filterLight);
 
       //By name
       const filterT29 = tanks.filter(tanks => tanks.name === "T29");
-      console.log("filterT29", filterT29);
       const filterT57 = tanks.filter(tanks => tanks.name === "T57 Heavy Tank");
-      console.log("filterT29", filterT57);
       const filterM48A5 = tanks.filter(tanks => tanks.name === "M48A5 Patton");
-      console.log("filterM48A5", filterM48A5);
       const filter140 = tanks.filter(tanks => tanks.name === "Object 140");
-      console.log("filter140", filter140);
       const filterCromwell = tanks.filter(tanks => tanks.name === "Cromwell");
-      console.log("filterCromwell", filterCromwell);
       const filterT54 = tanks.filter(tanks => tanks.name === "T-54 ltwt");
-      console.log("filterT54", filterT54);
       const filterT49 = tanks.filter(tanks => tanks.name === "T49");
-      console.log("filterT49", filterT49);
       const filterIS7 = tanks.filter(tanks => tanks.name === "IS-7");
-      console.log("filterIS7", filterIS7);
       const filterSc = tanks.filter(tanks => tanks.name === "Super Conqueror");
-      console.log("filterSc", filterSc);
       const filter907 = tanks.filter(tanks => tanks.name === "Object 907");
-      console.log("filter907", filter907);
 
       //By ammunition - Two Main Types
       const mapAmmoTypes = tanks.map(tanks => tanks.ammunition);
@@ -100,14 +83,11 @@ export default class TankList extends Component {
       const filterAmmo1 = tanks.filter(
         tanks => tanks.ammunition.toString() === "AP,APCR,HE"
       );
-      console.log("filterAmmo1", filterAmmo1);
       const filterAmmo2 = tanks.filter(
         tanks => tanks.ammunition.toString() === "APCR,HEAT,HE"
       );
-      console.log("filterAmmo2", filterAmmo2);
 
       const mapTanks = tanks.map(this.renderTanks);
-      console.log("mapTanks", mapTanks);
       const mapNames = tanks.map(tanks => tanks.name);
       console.log("mapNames", mapNames);
 
