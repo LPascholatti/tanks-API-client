@@ -12,18 +12,20 @@ export default function TankDetails(props) {
       <h1>{name}</h1>
       <img className="tank-details-img" alt={id} src={img} />
       <p>
-        {" "}
-        <strong> {`Manufacturer Country: ${country}`} </strong>
+        <strong> {"Manufacturer Country:"} </strong>
+        {country}
       </p>
       <p>
-        {" "}
-        <strong> {`Type: ${type}`} </strong>
+        <strong> {"Type:"} </strong>
+        {type}
       </p>
       <p>
-        {" "}
-        <strong> {`Ammunition Load: ${ammoString}`} </strong>
+        <strong> {"Ammunition Load:"} </strong>
+        {ammoString}
       </p>
-      <Link to="/"><button>Return</button></Link>
+      <Link to="/">
+        <button>Return</button>
+      </Link>
       <br />
     </div>
   );
