@@ -8,7 +8,8 @@ export default class TankList extends Component {
       name: "",
       country: "",
       type: "",
-      ammunition: ""
+      ammunition: "",
+      value: ""
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -17,13 +18,13 @@ export default class TankList extends Component {
 
   handleChange = event => {
     this.setState({
-      country: event.target.value
+      value: event.target.value
     });
   };
 
-  handleSubmit = (event, country) => {
-    this.setState({ country: country });
-    console.log("state", this.state.country);
+  handleSubmit = (event, value) => {
+    this.setState({ value: value });
+    console.log("state", this.state.value);
     event.preventDefault();
   };
 
@@ -50,7 +51,7 @@ export default class TankList extends Component {
     const { tanks } = this.props;
 
     // Filter By Country Function
-    const filterByCountry = country => {
+    const filterMain = value => {
       const filterUsa = tanks.filter(tanks => tanks.country === "USA");
       console.log("filterUsa", filterUsa);
       const filterUssr = tanks.filter(tanks => tanks.country === "USSR");
@@ -61,7 +62,7 @@ export default class TankList extends Component {
       const mapTanks = tanks.map(this.renderTanks);
       console.log("mapTanks", mapTanks);
 
-      switch (country) {
+      switch (value) {
         case "USA":
           return filterUsa.map(this.renderTanks);
         case "USSR":
@@ -91,7 +92,7 @@ export default class TankList extends Component {
           {!tanks && "Loading..."}
           {tanks && (
             <ul className="tanks-list">
-              {filterByCountry(this.state.country)}
+              {filterMain(this.state.value)}
             </ul>
           )}
         </main>
