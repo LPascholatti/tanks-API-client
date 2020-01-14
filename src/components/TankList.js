@@ -43,12 +43,16 @@ export default class TankList extends Component {
     );
   }
 
+  renderNameOptions(tanks) {
+    const { name } = tanks;
+    return <option value={name}>{name}</option>;
+  }
+
   render() {
     const { tanks } = this.props;
 
     // Filter By Country Function
     const filterMain = value => {
-
       // By Country
       const filterUsa = tanks.filter(tanks => tanks.country === "USA");
       console.log("filterUsa", filterUsa);
@@ -58,22 +62,23 @@ export default class TankList extends Component {
       console.log("filterUk", filterUk);
 
       // By type
-      const filterHeavy = tanks.filter(tanks => tanks.type === "heavy")
-      console.log("filterHeavy", filterHeavy)
-      const filterMedium = tanks.filter(tanks => tanks.type === "medium")
-      console.log("filterMedium", filterMedium)
-      const filterLight = tanks.filter(tanks => tanks.type === "light")
-      console.log("filterLight", filterLight)
+      const filterHeavy = tanks.filter(tanks => tanks.type === "heavy");
+      console.log("filterHeavy", filterHeavy);
+      const filterMedium = tanks.filter(tanks => tanks.type === "medium");
+      console.log("filterMedium", filterMedium);
+      const filterLight = tanks.filter(tanks => tanks.type === "light");
+      console.log("filterLight", filterLight);
 
       const mapTanks = tanks.map(this.renderTanks);
       console.log("mapTanks", mapTanks);
-      const mapNames = tanks.map(tanks => tanks.name)
-      console.log("mapNames", mapNames)
+      const mapNames = tanks.map(tanks => tanks.name);
+      console.log("mapNames", mapNames);
 
-      const filterByName = (name) => {
-        let filterName = tanks.filter(tanks => tanks.name === name)
-        return filterName.map(this.renderTanks)
-      }
+      const filterByName = name => {
+        let filterName = tanks.filter(tanks => tanks.name === name);
+        console.log("filterName", filterName);
+        return filterName.map(this.renderTanks);
+      };
 
       switch (value) {
         case "USA":
@@ -83,13 +88,13 @@ export default class TankList extends Component {
         case "UK":
           return filterUk.map(this.renderTanks);
         case "heavy":
-          return filterHeavy.map(this.renderTanks)
+          return filterHeavy.map(this.renderTanks);
         case "medium":
-          return filterMedium.map(this.renderTanks)
+          return filterMedium.map(this.renderTanks);
         case "light":
-          return filterLight.map(this.renderTanks)
+          return filterLight.map(this.renderTanks);
         case "NAME":
-          return filterByName(value)
+          return filterByName(value);
         default:
           return mapTanks;
       }
@@ -119,11 +124,15 @@ export default class TankList extends Component {
               <option value="light">LIGHT</option>
             </select>
           </form>
+          <form onSubmit={this.handleSubmit}>
+            Filter Tank By Name:
+            <select value={this.state.value} onChange={this.handleChange}>
+              {tanks.map(this.renderNameOptions)}
+            </select>
+          </form>
           {!tanks && "Loading..."}
           {tanks && (
-            <ul className="tanks-list">
-              {filterMain(this.state.value)}
-            </ul>
+            <ul className="tanks-list">{filterMain(this.state.value)}</ul>
           )}
         </main>
       </div>
