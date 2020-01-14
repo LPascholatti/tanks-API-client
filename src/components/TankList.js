@@ -1,5 +1,9 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import InputLabel from "@material-ui/core/InputLabel";
+import MenuItem from "@material-ui/core/MenuItem";
+import FormControl from "@material-ui/core/FormControl";
+import Select from "@material-ui/core/Select";
 
 export default class TankList extends Component {
   constructor(props) {
@@ -140,52 +144,94 @@ export default class TankList extends Component {
             <strong>List of tanks:</strong>
           </h2>
           <div className="forms">
-            <form onSubmit={this.handleSubmit}>
-              {"Filter Tank By Country: "}
-              <select value={this.state.value} onChange={this.handleChange}>
-                <option value="">ALL</option>
-                <option value="USA">USA</option>
-                <option value="USSR">USSR</option>
-                <option value="UK">UK</option>
-              </select>
-              <input type="submit" value="Submit" />
-            </form>
-            <form onSubmit={this.handleSubmit}>
-              {"Filter Tank By Type: "}
-              <select value={this.state.value} onChange={this.handleChange}>
-                <option value="">ALL</option>
-                <option value="heavy">HEAVY</option>
-                <option value="medium">MEDIUM</option>
-                <option value="light">LIGHT</option>
-              </select>
-              <input type="submit" value="Submit" />
-            </form>
-            <form onSubmit={this.handleSubmit}>
-              {"Filter Tank By Name: "}
-              <select value={this.state.value} onChange={this.handleChange}>
-                <option value="">ALL</option>
-                <option value="T29">T29</option>
-                <option value="T57 Heavy Tank">T57 Heavy Tank</option>
-                <option value="M48A5 Patton">M48A5 Patton</option>
-                <option value="Object 140">Object 140</option>
-                <option value="Cromwell">Cromwell</option>
-                <option value="T-54 ltwt">T-54 ltwt</option>
-                <option value="T49">T49</option>
-                <option value="IS-7">IS-7</option>
-                <option value="Super Conqueror">Super Conqueror</option>
-                <option value="Object 907">Object 907</option>
-              </select>
-              <input type="submit" value="Submit" />
-            </form>
-            <form onSubmit={this.handleSubmit}>
-              {"Filter Tank By Ammo Load: "}
-              <select value={this.state.value} onChange={this.handleChange}>
-                <option value="">ALL</option>
-                <option value="AP,APCR,HE">AP,APCR,HE</option>
-                <option value="APCR,HEAT,HE">APCR,HEAT,HE</option>
-              </select>
-              <input type="submit" value="Submit" />
-            </form>
+            <p>Filter by:</p>
+            <FormControl
+              className="filter-country-form"
+              onSubmit={this.handleSubmit}
+            >
+              <InputLabel shrink id="country-filter">
+                Country
+              </InputLabel>
+              <Select
+                labelId="country-filter"
+                id="country-filter"
+                value={this.state.value}
+                onChange={this.handleChange}
+              >
+                <MenuItem value="">
+                  <em>None</em>
+                </MenuItem>
+                <MenuItem value={"USA"}>USA</MenuItem>
+                <MenuItem value={"USSR"}>USSR</MenuItem>
+                <MenuItem value={"UK"}>UK</MenuItem>
+              </Select>
+            </FormControl>
+            <span className="divider" />
+            <FormControl
+              className="filter-type-form"
+              onSubmit={this.handleSubmit}
+            >
+              <InputLabel shrink id="type-filter">
+                Type
+              </InputLabel>
+              <Select
+                labelId="country-filter"
+                id="country-filter"
+                value={this.state.value}
+                onChange={this.handleChange}
+              >
+                <MenuItem value="">
+                  <em>None</em>
+                </MenuItem>
+                <MenuItem value={"heavy"}>Heavy</MenuItem>
+                <MenuItem value={"medium"}>Medium</MenuItem>
+                <MenuItem value={"light"}>Light</MenuItem>
+              </Select>
+            </FormControl>
+            <span className="divider" />
+            <FormControl onSubmit={this.handleSubmit}>
+              <InputLabel shrink id="name-filter">
+                Name
+              </InputLabel>
+              <Select
+                value={this.state.value}
+                onChange={this.handleChange}
+                labelId="country-filter"
+                id="country-filter"
+              >
+                <MenuItem value="">
+                  <em>None</em>
+                </MenuItem>
+                <MenuItem value={"T29"}>T29</MenuItem>
+                <MenuItem value={"T57 Heavy Tank"}>T57 Heavy Tank</MenuItem>
+                <MenuItem value={"M48A5 Patton"}>M48A5 Patton</MenuItem>
+                <MenuItem value={"Object 140"}>Object 140</MenuItem>
+                <MenuItem value={"Cromwell"}>Cromwell</MenuItem>
+                <MenuItem value={"T-54 ltwt"}>T-54 ltwt</MenuItem>
+                <MenuItem value={"T49"}>T49</MenuItem>
+                <MenuItem value={"IS-7"}>IS-7</MenuItem>
+                <MenuItem value={"Super Conqueror"}>Super Conqueror</MenuItem>
+                <MenuItem value={"Object 907"}>Object 907</MenuItem>
+              </Select>
+            </FormControl>
+            <span className="divider" />
+            <FormControl onSubmit={this.handleSubmit}>
+              <InputLabel shrink id="ammunition-filter">
+                Ammo
+              </InputLabel>
+              <Select
+                value={this.state.value}
+                onChange={this.handleChange}
+                labelId="country-filter"
+                id="country-filter"
+              >
+                <MenuItem value="">
+                  <em>None</em>
+                </MenuItem>
+                <MenuItem value="AP,APCR,HE">AP,APCR,HE</MenuItem>
+                <MenuItem value="APCR,HEAT,HE">APCR,HEAT,HE</MenuItem>
+              </Select>
+            </FormControl>
           </div>
           {!tanks && "Loading..."}
           {tanks && (

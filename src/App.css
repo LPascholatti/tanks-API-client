@@ -40,3 +40,15 @@ header {
 hr {
   border-top: 2px dashed;
 }
+
+.forms {
+  width: 18rem;
+  display: inline-block;
+  flex-direction: column;
+}
+
+.divider {
+  height: auto;
+  display: inline-block;
+  width: 10px;
+}
