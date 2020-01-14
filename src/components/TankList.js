@@ -74,12 +74,6 @@ export default class TankList extends Component {
       const mapNames = tanks.map(tanks => tanks.name);
       console.log("mapNames", mapNames);
 
-      const filterByName = name => {
-        let filterName = tanks.filter(tanks => tanks.name === name);
-        console.log("filterName", filterName);
-        return filterName.map(this.renderTanks);
-      };
-
       switch (value) {
         case "USA":
           return filterUsa.map(this.renderTanks);
@@ -93,8 +87,6 @@ export default class TankList extends Component {
           return filterMedium.map(this.renderTanks);
         case "light":
           return filterLight.map(this.renderTanks);
-        case "NAME":
-          return filterByName(value);
         default:
           return mapTanks;
       }
