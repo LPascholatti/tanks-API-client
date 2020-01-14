@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import TankListContainer from "./TankListContainer";
+import TankDetailsContainer from './TankDetailsContainer';
+import { Route } from "react-router-dom";
 
 export default class Home extends Component {
   render() {
@@ -12,7 +14,8 @@ export default class Home extends Component {
           <h2>
             <strong>List of tanks:</strong>
           </h2>
-          <TankListContainer />
+          <Route path='/' exact component={TankListContainer}/>
+          <Route path='/tanks/:id' component={TankDetailsContainer}/>
         </main>
       </div>
     );
