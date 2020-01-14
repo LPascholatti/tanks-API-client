@@ -5,10 +5,6 @@ export default class TankList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: "",
-      country: "",
-      type: "",
-      ammunition: "",
       value: ""
     };
 
