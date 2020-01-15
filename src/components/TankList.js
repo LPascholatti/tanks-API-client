@@ -48,6 +48,7 @@ export default class TankList extends Component {
         <Link to={`tanks/${id}`}>
           <Button>Details</Button>
         </Link>
+        <span className="dividerVertical"/>
         <br />
         <Divider />
       </li>
