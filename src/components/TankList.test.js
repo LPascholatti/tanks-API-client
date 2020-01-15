@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import TankListContainer from "./TankListContainer";
+import TankList from "./TankList";
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "../store";
@@ -10,7 +10,7 @@ it("renders without crashing", () => {
   ReactDOM.render(
     <Provider store={store}>
       <BrowserRouter>
-        <TankListContainer />
+        <TankList />
       </BrowserRouter>
     </Provider>,
     div
