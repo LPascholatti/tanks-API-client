@@ -37,10 +37,6 @@ header {
   color: white;
 }
 
-hr {
-  border-top: 2px dashed;
-}
-
 .forms {
   width: 18rem;
   display: inline-block;

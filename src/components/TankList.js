@@ -6,7 +6,7 @@ import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
-import Divider from '@material-ui/core/Divider';
+import Divider from "@material-ui/core/Divider";
 
 export default class TankList extends Component {
   constructor(props) {
@@ -37,6 +37,7 @@ export default class TankList extends Component {
 
     return (
       <li key={id}>
+        <span className="dividerVertical" />
         <Typography variant="h4" gutterBottom>
           {`${name}: ${type} tank from ${country}`}
         </Typography>
@@ -48,7 +49,7 @@ export default class TankList extends Component {
         <Link to={`tanks/${id}`}>
           <Button>Details</Button>
         </Link>
-        <span className="dividerVertical"/>
+        <span className="dividerVertical" />
         <br />
         <Divider />
       </li>
