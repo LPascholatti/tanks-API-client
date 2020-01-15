@@ -4,6 +4,8 @@ import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
+import Button from "@material-ui/core/Button";
+import Typography from "@material-ui/core/Typography";
 
 export default class TankList extends Component {
   constructor(props) {
@@ -34,14 +36,16 @@ export default class TankList extends Component {
 
     return (
       <li key={id}>
-        <h3>{`${name}: ${type} tank from ${country}`}</h3>
+        <Typography variant="h4" gutterBottom>
+          {`${name}: ${type} tank from ${country}`}
+        </Typography>
         <img className="tanks-images" alt={id} src={img} />
-        <p>
-          <strong>{"Ammunition equiped: "}</strong>
+        <Typography variant="h6" gutterBottom>
+          {"Ammunition equiped: "}
           {ammoString}
-        </p>
+        </Typography>
         <Link to={`tanks/${id}`}>
-          <button>Details</button>
+          <Button>Details</Button>
         </Link>
         <br />
         <hr />
@@ -140,11 +144,14 @@ export default class TankList extends Component {
     return (
       <div className="tanks-list">
         <main>
-          <h2>
-            <strong>List of tanks:</strong>
-          </h2>
+          <Typography variant="h4" gutterBottom>
+            List of Tanks
+          </Typography>
           <div className="forms">
-            <p>Filter by:</p>
+            <Typography variant="h6" gutterBottom>
+              Filter by:
+            </Typography>
+            <span className="dividerVertical" />
             <FormControl
               className="filter-country-form"
               onSubmit={this.handleSubmit}
@@ -166,7 +173,7 @@ export default class TankList extends Component {
                 <MenuItem value={"UK"}>UK</MenuItem>
               </Select>
             </FormControl>
-            <span className="divider" />
+            <span className="dividerHorizontal" />
             <FormControl
               className="filter-type-form"
               onSubmit={this.handleSubmit}
@@ -188,7 +195,7 @@ export default class TankList extends Component {
                 <MenuItem value={"light"}>Light</MenuItem>
               </Select>
             </FormControl>
-            <span className="divider" />
+            <span className="dividerHorizontal" />
             <FormControl onSubmit={this.handleSubmit}>
               <InputLabel shrink id="name-filter">
                 Name
@@ -214,7 +221,7 @@ export default class TankList extends Component {
                 <MenuItem value={"Object 907"}>Object 907</MenuItem>
               </Select>
             </FormControl>
-            <span className="divider" />
+            <span className="dividerHorizontal" />
             <FormControl onSubmit={this.handleSubmit}>
               <InputLabel shrink id="ammunition-filter">
                 Ammo

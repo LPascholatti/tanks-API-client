@@ -1,7 +1,7 @@
 import request from "superagent";
 
-//export const baseUrl = "https://tanks-api.herokuapp.com";
-export const baseUrl = "http://localhost:4000";
+export const baseUrl = "https://tanks-api.herokuapp.com";
+//export const baseUrl = "http://localhost:4000";
 
 export const TANKS_FETCH = "TANKS_FETCH";
 export const TANK_FETCH = "TANK_FETCH";

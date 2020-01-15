@@ -2,13 +2,16 @@ import React, { Component } from "react";
 import TankListContainer from "./TankListContainer";
 import TankDetailsContainer from "./TankDetailsContainer";
 import { Route } from "react-router-dom";
+import Typography from "@material-ui/core/Typography";
 
 export default class Home extends Component {
   render() {
     return (
       <div>
         <header>
-          <h1>Welcome to Tanks API</h1>
+        <Typography variant="h3" gutterBottom>
+          Welcome to Tanks API
+        </Typography>
         </header>
         <main>
             <Route path="/" exact component={TankListContainer} />

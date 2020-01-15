@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Button from "@material-ui/core/Button";
+import Typography from "@material-ui/core/Typography";
 
 export default function TankDetails(props) {
   const tank = props.tank;
@@ -9,7 +11,9 @@ export default function TankDetails(props) {
 
   return (
     <div className="tank-details">
-      <h1>{name}</h1>
+      <Typography variant="h3" gutterBottom>
+        {name}
+      </Typography>
       <img className="tank-details-img" alt={id} src={img} />
       <p>
         <strong> {"Manufacturer Country:"} </strong>
@@ -24,7 +28,7 @@ export default function TankDetails(props) {
         {ammoString}
       </p>
       <Link to="/">
-        <button>Return</button>
+        <Button>Return</Button>
       </Link>
       <br />
     </div>
