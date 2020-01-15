@@ -47,8 +47,13 @@ hr {
   flex-direction: column;
 }
 
-.divider {
+.dividerHorizontal {
   height: auto;
   display: inline-block;
   width: 10px;
+}
+
+.dividerVertical {
+  padding-bottom: 1rem;
+  display: flex;
 }
